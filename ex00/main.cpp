@@ -4,6 +4,8 @@ int main(void)
 {
 	Bureaucrat steph = Bureaucrat();
 	Bureaucrat bernard = Bureaucrat("bernard", 1);
+	// Bureaucrat error = Bureaucrat("bernard", 0);
+	// Bureaucrat error = Bureaucrat("bernard", 151);
 
 	// try
 	// {
@@ -24,4 +26,6 @@ int main(void)
 	// }
 
 	std::cout << bernard << std::endl;
+	std::cout << steph << std::endl;
+	// std::cout << error << std::endl;
 }
