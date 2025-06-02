@@ -18,9 +18,5 @@ public:
 
 
 private:
-	const int _gradeToSign;
-	const int _gradeToExecute;
-	bool _signed;
 	std::string _target;
-
 };

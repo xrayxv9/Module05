@@ -9,7 +9,7 @@ YELLOW = \033[33m
 BLUE = \033[38;2;15;101;214m
 RESET = \033[0m
 
-SRC = main.cpp Bureaucrat.cpp  AForm.cpp ShrubberyCreationForm.cpp PresidentialPardonForm.cpp
+SRC = main.cpp Bureaucrat.cpp  AForm.cpp ShrubberyCreationForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp
 
 OBJS_SRC = $(SRC:.cpp=.o)
 

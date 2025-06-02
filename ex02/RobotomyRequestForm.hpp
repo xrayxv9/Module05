@@ -12,14 +12,11 @@ public:
 	
 	RobotomyRequestForm( const RobotomyRequestForm& cpy);
 
-	RobotomyRequestForm operator=( const RobotomyRequestForm& cpy);
+	RobotomyRequestForm& operator=( const RobotomyRequestForm& cpy);
 
 	void execute(const Bureaucrat &employee) const;
 
 
 private:
-	const int _gradeToSign;
-	const int _gradeToExecute;
-	bool _signed;
-
+	std::string _target;
 };

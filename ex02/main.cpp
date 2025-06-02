@@ -1,33 +1,52 @@
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
 #include "AForm.hpp"
 #include <PresidentialPardonForm.hpp>
 
 int main(void)
 {
-	Bureaucrat	steph = Bureaucrat();
-	Bureaucrat	bernard = Bureaucrat("bernard", 1);
+	Bureaucrat	arthur = Bureaucrat();
+	Bureaucrat	zaphod = Bureaucrat("zaphod", 1);
 	ShrubberyCreationForm shrubb = ShrubberyCreationForm("strawberry");
 	PresidentialPardonForm president = PresidentialPardonForm("Arthur Dent");
+	RobotomyRequestForm marvin = RobotomyRequestForm("trillian");
 
 	std::cout << "TEST ON THE SHRUBBERY" << std::endl << std::endl;
 
-	bernard.executeForm(shrubb);
-	steph.executeForm(shrubb);
-	bernard.signForm(shrubb);
-	bernard.executeForm(shrubb);
+	zaphod.executeForm(shrubb);
+	arthur.executeForm(shrubb);
+	zaphod.signForm(shrubb);
+	zaphod.executeForm(shrubb);
 
 	std::cout << std::endl;
+
 	std::cout << "TEST ON THE PRESIDENTIAL" << std::endl << std::endl;
 
 	try
 	{
-		bernard.executeForm(president);
+		zaphod.executeForm(president);
 	}
 	catch (AForm::FormNotSignedException &e)
 	{
 		std::cout << e.what() << std::endl;
 	}
-	bernard.signForm(president);
-	steph.executeForm(president);
+	zaphod.signForm(president);
+	arthur.executeForm(president);
+	zaphod.executeForm(president);
+
+	std::cout << std::endl;
+	std::cout << "TEST ON THE ROBOTOMY" << std::endl << std::endl;
+
+	try
+	{
+		zaphod.executeForm(marvin);
+	}
+	catch (AForm::FormNotSignedException &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	zaphod.signForm(marvin);
+	arthur.executeForm(marvin);
+	zaphod.executeForm(marvin);
 }

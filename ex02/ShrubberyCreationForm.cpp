@@ -2,18 +2,14 @@
 #include <Bureaucrat.hpp>
 #include <fstream>
 
-ShrubberyCreationForm::ShrubberyCreationForm(): _gradeToSign(145), _gradeToExecute(137), _signed(false), _target("default") {}
+ShrubberyCreationForm::ShrubberyCreationForm(): AForm("default", 145, 137), _target("default") {}
 
-ShrubberyCreationForm::ShrubberyCreationForm( std::string target ): _gradeToSign(145), _gradeToExecute(137), _signed(false), _target(target) {}
+ShrubberyCreationForm::ShrubberyCreationForm( std::string target ): AForm(target, 145, 137), _target(target) {}
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& cpy)
 {
 	if (this != &cpy)
-	{
 		this->_target = cpy._target;
-		this->_signed = cpy._signed;
-		return *this;
-	}
 	return *this;
 }
 
@@ -21,9 +17,9 @@ ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
 void ShrubberyCreationForm::execute(const Bureaucrat &employee) const
 {
-	if (employee.getGrade() > this->_gradeToExecute)
+	if (employee.getGrade() > getGradeToExecute())
 		throw GradeTooLowException();
-	else if (this->_signed == false)
+	else if (getSigned() != "The form has been signed")
 		throw FormNotSignedException();
 	else
 	{
