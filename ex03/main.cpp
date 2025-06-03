@@ -2,22 +2,34 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "AForm.hpp"
+#include "Intern.hpp"
 #include <PresidentialPardonForm.hpp>
 
 int main(void)
 {
 	Bureaucrat	arthur = Bureaucrat();
 	Bureaucrat	zaphod = Bureaucrat("zaphod", 1);
-	ShrubberyCreationForm shrubb = ShrubberyCreationForm("strawberry");
-	PresidentialPardonForm president = PresidentialPardonForm("Arthur Dent");
-	RobotomyRequestForm marvin = RobotomyRequestForm("trillian");
+	Intern intern = Intern();
+	AForm *marvin = intern.makeForm("RobotomyRequestForm", "Arthur Dent"); 
+	AForm *shrubb= intern.makeForm("ShrubberyCreationForm", "strawberry"); 
+	AForm *president = intern.makeForm("PresidentialPardonForm", "Trillian");
+
+	try
+	{
+		AForm *solanum = intern.makeForm("I am a nomai", "Solanum");
+		solanum->beSigned(zaphod);
+	}
+	catch (Intern::UnknownName &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 
 	std::cout << "TEST ON THE SHRUBBERY" << std::endl << std::endl;
 
-	zaphod.executeForm(shrubb);
-	arthur.executeForm(shrubb);
-	zaphod.signForm(shrubb);
-	zaphod.executeForm(shrubb);
+	zaphod.executeForm(*shrubb);
+	arthur.executeForm(*shrubb);
+	zaphod.signForm(*shrubb);
+	zaphod.executeForm(*shrubb);
 
 	std::cout << std::endl;
 
@@ -25,28 +37,32 @@ int main(void)
 
 	try
 	{
-		zaphod.executeForm(president);
+		zaphod.executeForm(*president);
 	}
 	catch (AForm::FormNotSignedException &e)
 	{
 		std::cout << e.what() << std::endl;
 	}
-	zaphod.signForm(president);
-	arthur.executeForm(president);
-	zaphod.executeForm(president);
+	zaphod.signForm(*president);
+	arthur.executeForm(*president);
+	zaphod.executeForm(*president);
 
 	std::cout << std::endl;
 	std::cout << "TEST ON THE ROBOTOMY" << std::endl << std::endl;
 
 	try
 	{
-		zaphod.executeForm(marvin);
+		zaphod.executeForm(*marvin);
 	}
 	catch (AForm::FormNotSignedException &e)
 	{
 		std::cout << e.what() << std::endl;
 	}
-	zaphod.signForm(marvin);
-	arthur.executeForm(marvin);
-	zaphod.executeForm(marvin);
+	zaphod.signForm(*marvin);
+	arthur.executeForm(*marvin);
+	zaphod.executeForm(*marvin);
+
+	delete president;
+	delete marvin;
+	delete shrubb;
 }
