@@ -13,6 +13,11 @@ Intern& Intern::operator=( const Intern &intern)
 
 Intern::~Intern() {}
 
+Intern::Intern( const Intern &cpy)
+{
+	*this = cpy;
+}
+
 const char *Intern::UnknownName::what() const throw()
 {
 	return ("The name of the form you gave me doesn't exist sir.");
