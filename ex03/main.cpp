@@ -10,9 +10,9 @@ int main(void)
 	Bureaucrat	arthur = Bureaucrat();
 	Bureaucrat	zaphod = Bureaucrat("zaphod", 1);
 	Intern intern = Intern();
-	AForm *marvin = intern.makeForm("RobotomyRequestForm", "Arthur Dent"); 
-	AForm *shrubb= intern.makeForm("ShrubberyCreationForm", "strawberry"); 
-	AForm *president = intern.makeForm("PresidentialPardonForm", "Trillian");
+	AForm *marvin = intern.makeForm("robotomy request", "Arthur Dent"); 
+	AForm *shrubb= intern.makeForm("shrubbery creation", "strawberry"); 
+	AForm *president = intern.makeForm("presidential pardon", "Trillian");
 
 	try
 	{

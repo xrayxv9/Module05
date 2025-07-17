@@ -1,9 +1,9 @@
 #include "PresidentialPardonForm.hpp"
 #include <Bureaucrat.hpp>
 
-PresidentialPardonForm::PresidentialPardonForm(): AForm("default", 72, 45), _target("default") {}
+PresidentialPardonForm::PresidentialPardonForm(): AForm("presidential pardon", 72, 45), _target("default") {}
 
-PresidentialPardonForm::PresidentialPardonForm( std::string target ): AForm(target, 72, 45), _target(target) {}
+PresidentialPardonForm::PresidentialPardonForm( std::string target ): AForm("presidential pardon", 72, 45), _target(target) {}
 
 PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& cpy)
 {

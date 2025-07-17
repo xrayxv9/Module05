@@ -53,7 +53,7 @@ public:
 	};
 
 private:
-	std::string _name;
+	const std::string _name;
 	bool _signed;
 	const int _gradeToSign;
 	const int _gradeToExecute;

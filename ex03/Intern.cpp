@@ -41,7 +41,7 @@ static AForm *makeShrub( const std::string targetName )
 AForm *Intern::makeForm( const std::string nameOfForm, const std::string targetName)
 {
 	AForm *(*allForms[])( const std::string name ) = {&makePresident, &makeRobot, &makeShrub};
-	std::string formName[] = {"PresidentialPardonForm", "RobotomyRequestForm", "ShrubberyCreationForm"};
+	std::string formName[] = {"presidential pardon", "robotomy request", "shrubbery creation"};
 
 	for (int i = 0; i < 3; i++)
 	{

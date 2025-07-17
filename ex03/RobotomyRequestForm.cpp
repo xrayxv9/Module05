@@ -2,9 +2,9 @@
 #include <Bureaucrat.hpp>
 #include <cstdlib>
 
-RobotomyRequestForm::RobotomyRequestForm(): AForm("default", 72, 45), _target("default") {}
+RobotomyRequestForm::RobotomyRequestForm(): AForm("robotomy request", 72, 45), _target("default") {}
 
-RobotomyRequestForm::RobotomyRequestForm( std::string target ): AForm(target, 72, 45), _target(target) {}
+RobotomyRequestForm::RobotomyRequestForm( std::string target ): AForm("robotomy request", 72, 45), _target(target) {}
 
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& cpy)
 {

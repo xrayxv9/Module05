@@ -2,9 +2,9 @@
 #include <Bureaucrat.hpp>
 #include <fstream>
 
-ShrubberyCreationForm::ShrubberyCreationForm(): AForm("default", 145, 137), _target("default") {}
+ShrubberyCreationForm::ShrubberyCreationForm(): AForm("shrubbery creation", 145, 137), _target("default") {}
 
-ShrubberyCreationForm::ShrubberyCreationForm( std::string target ): AForm(target, 145, 137), _target(target) {}
+ShrubberyCreationForm::ShrubberyCreationForm( std::string target ): AForm("shrubbery creation", 145, 137), _target(target) {}
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& cpy)
 {
