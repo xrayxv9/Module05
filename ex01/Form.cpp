@@ -73,15 +73,20 @@ std::ostream& operator<<(std::ostream &o, const Form &self)
 	return o;
 }
 
+const char *Form::AlreadySignedException::what() const throw()
+{
+	return "it has already been signed ";
+}
+
 void Form::beSigned(const Bureaucrat& employee)
 {
 	if ((employee.getGrade() <= this->_gradeToSign) && _signed == false)
 	{
-		std::cout << "The Form is now signed" << std::endl;
+		std::cout << employee.getName() << " signed " << _name << std::endl;
 		_signed = true;
 	}
 	else if ((employee.getGrade() <= this->_gradeToSign) && _signed == true)
-		std::cout << this->_name << " has already been signed" << std::endl;
+		throw AlreadySignedException();
 	else
 		throw GradeTooLowException();
 }

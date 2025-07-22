@@ -72,6 +72,11 @@ const char *AForm::FormNotSignedException::what() const throw()
 	return ("The form has never been signed, therefore you cannot execute it");
 }
 
+const char *AForm::AlreadySignedException::what() const throw()
+{
+	return "it has already been signed ";
+}
+
 std::ostream& operator<<(std::ostream &o, const AForm &self)
 {
 	o << self.getName() << " needs a grade of " << self.getGradeToSign() << " to be signed, and a grade of " << self.getGradeToExecute() << " to be executed." << self.getSigned();
@@ -86,7 +91,7 @@ void AForm::beSigned(const Bureaucrat& employee)
 		_signed = true;
 	}
 	else if ((employee.getGrade() <= this->_gradeToSign) && _signed == true)
-		std::cout << this->_name << " has already been signed" << std::endl;
+		throw AlreadySignedException();
 	else
 		throw GradeTooLowException();
 }

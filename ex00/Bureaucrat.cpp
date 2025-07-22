@@ -72,6 +72,6 @@ void Bureaucrat::setGrade(int grade)
 
 std::ostream& operator<<(std::ostream& o, const Bureaucrat& self)
 {
-	o << self.getName() << ", bureaucrat grade " << self.getGrade();
+	o << self.getName() << ", bureaucrat grade " << self.getGrade() << ".";
 	return (o);
 }
